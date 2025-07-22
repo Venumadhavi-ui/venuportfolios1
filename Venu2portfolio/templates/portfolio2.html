@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>{{ portfolio.name }} - Details</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body class="{{ portfolio.bg_class }}">
+  <div class="page-center">
+    <div class="Container animated-zoom">
+          <header class="animated">
+             <a href="#" class="logo">{{portfolio.name}}</a>
+          </header>
+           <h2 contenteditable="true" class="section-title">About</h2>
+      <div class="section visible editable-box" contenteditable="true">
+              <p><strong>Role:</strong> {{ portfolio.role }}</p>
+              <p><strong>Email:</strong> {{ portfolio.email }}</p>
+              <p><strong>Phone:</strong> {{ portfolio.phone }}</p>
+              <p><strong>Location:</strong> {{ portfolio.location }}</p>
+          </div>
+
+        <h2 contenteditable="true" class="section-title">Services</h2>
+      <div class="section visible editable-box" contenteditable="true">
+          <ul>
+            <li>Web Design</li>
+            <li>Development</li>
+            <li>Consulting</li>
+          </ul>
+        </div>
+
+       <h2 contenteditable="true" class="section-title">Contact</h2>
+      <div class="section visible editable-box" contenteditable="true">
+        <p>Email: {{ portfolio.email }}</p>
+        <p>Phone: {{ portfolio.phone }}</p>
+      </div>
+    <div class="gender-info {{ portfolio.gender }}">
+      {% if portfolio.gender == "male" %}
+        <i class="fas fa-mars"></i> Male
+      {% elif portfolio.gender == "female" %}
+        <i class="fas fa-venus"></i> Female
+      {% else %}
+        <i class="fas fa-genderless"></i> Other
+      {% endif %}
+    </div>
+  
+  <div class="section visible">
+  <form method="POST" class="form-section">
+  <b>Choose your gender:</b>
+  <div style="display: flex; gap: 15px; margin-top: 5px;">
+    <label><input type="radio" id="male" name="gender" value="male"> ♂ Male</label>
+    <label><input type="radio" id="female" name="gender" value="female"> ♀ Female</label>
+  </div>
+
+  <b style="margin-top: 10px; display: block;">Select your interests:</b>
+  <div style="display: flex; gap: 15px; margin-top: 5px;">
+    <label><input type="checkbox" id="reading" name="interests" value="Reading"> Reading</label>
+    <label><input type="checkbox" id="coding" name="interests" value="Coding"> Coding</label>
+  </div>
+
+  <label for="bio" style="margin-top: 10px; display: block;">Bio (up to 200 characters):</label>
+  <input type="text" id="bio" name="bio" maxlength="200" class="editable-box" placeholder="Enter your bio here..." style="width: 100%;">
+
+  <button type="submit" class="btn" style="margin-top: 10px;">Submit</button>
+</form>
+
+
+</div>
+
+</div>
+
+</body>
+</html>

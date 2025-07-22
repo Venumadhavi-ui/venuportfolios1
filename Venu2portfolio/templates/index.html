@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>All Portfolios</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+</head>
+<body class="index-page">
+  <div class="page-center">
+  <header>
+    <h1>My Portfolio Showcase</h1>
+    <nav class="navbar">
+      <a href="#portfolios">Portfolios</a>
+    </nav>
+  </header>
+
+  <main class="Container">
+    <section id="portfolios" class="portfolio-list section">
+      {% for portfolio in portfolios %}
+        <div class="portfolio-card">
+          <a href="{{ url_for('portfolio', portfolio_id=portfolio.id) }}" class="portfolio-link">
+            <div class="img-box">
+            <img src="{{ url_for('static', filename=portfolio.image) }}" alt="{{ portfolio.name }}" class="profile-img">
+            </div>
+            <div class="portfolio-info">
+              <h2>{{ portfolio.name }}</h2>
+              <p>{{ portfolio.role }}</p>
+              <a class="btn" href="{{ url_for('portfolio', portfolio_id=portfolio.id) }}">View Profile</a>
+              <br>
+              <a class="btn" href="{{ url_for('static', filename=portfolio.resume) }}" download>Download Resume</a>
+            </div>
+          </a>
+        </div>
+      {% endfor %}
+    </section>
+  </main>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+  </div>
+</body>
+</html>
